@@ -1,0 +1,277 @@
+/*
+Name: Relaxr Stylesheet
+Author: Nina Mujdzic
+Author URI: http://neendreams.com/
+Version: 1
+
+Reset:http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div,
+h1, h2, h3, h4, h5, h6, p,
+a, cite, em, img, strong,
+b, u, i, ol, ul, li,
+article, aside,
+footer, header,
+menu, section {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+
+/*------SETUP------*/
+
+/* Box Model Hack */
+* {
+     -moz-box-sizing: border-box; /* Firexfox */
+     -webkit-box-sizing: border-box; /* Safari/Chrome/iOS/Android */
+     box-sizing: border-box; /* IE */
+}
+
+/* Clear fix hack */
+.clearfix:after {
+     content: ".";
+     display: block;
+     clear: both;
+     visibility: hidden;
+     line-height: 0;
+     height: 0;
+}
+
+.clear {
+  clear: both;
+}
+
+
+html {
+	overflow-x: hidden;
+}
+
+body {
+	font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+  font-size: 11pt;
+  width: 100%;
+  line-height: 1;
+}
+
+/*------FONT------*/
+
+h1, h2, h3 {
+	color:@relaxrblue;
+}
+
+h1 {
+	padding: 0;
+	font-size: 1.8rem;
+	line-height: 2.3rem;
+	font-weight: bold;
+}
+
+h2 {
+  padding: 0;
+	margin: 20px 0 10px 0;
+	font-size: 1.2rem;
+	line-height: 1rem;
+	font-weight: bold;
+}
+
+h3 {
+  font-size: 20pt;
+  line-height: 25pt;
+  color: #FFF;
+  font-weight: normal;
+  font-style:italic;
+}
+
+a {
+  color: @gray;
+  text-decoration: none;
+}
+
+a:hover,
+a:active,
+a:visited,
+header.top ul.menu li a:hover,
+header.top ul.menu li a:active,
+header.top ul.menu li a:visited,
+section#content p.read-more a:hover,
+section#content p.read-more a:active,
+section#content p.read-more a:visited  {
+	color:@gray * 3;
+}
+
+p {
+	font-size:12pt;
+	line-height:14pt;
+  color: lighten(@gray, 30%);
+}
+
+strong {
+	font-weight:bold;
+}
+
+/*------CONTENT-----*/
+
+ul {
+	padding:0px;
+  margin: margin:0px;
+}
+
+li {
+  list-style-type: none;
+	margin:0px;
+	padding:0px;
+  font-size:12pt;
+  line-height:16pt;
+  color: lighten(@gray, 30%);
+}
+
+
+@gray: #333333;
+@background: #efefee;
+@relaxrblue: #043049;
+@buttoncolor: #E6E6E6;
+
+body {
+  color: @gray;
+	background: @background;
+}
+
+header.top {
+	background: @relaxrblue;
+	width:100%;
+	overflow: hidden;
+	padding: 2%;
+
+	a.logo {
+		float:left;
+		width: 16%;
+	}
+
+	ul.menu {
+		float: right;
+		width: 80%;
+		text-align: right;
+	}
+
+  ul.menu li {
+		display: inline-block;
+		font-size: 1.2rem;
+		padding: 0px 2%;
+	}
+
+	ul.menu li a {
+		color: #F9E42E;
+	}
+
+}
+
+section#content {
+	width: 60%;
+	padding: 2% 2% 2% 6%;
+	float: left;
+
+	article.blog {
+		margin: 50px 0;
+		border-bottom: 1px solid #000;
+		padding-bottom: 10px;
+		overflow: hidden;
+	}
+
+	.firstletter {
+	float: left;
+	font-size: 3rem;
+	line-height: 2.3rem;
+	font-weight: bold;
+	margin-right: 0.5rem;
+}
+
+	img {
+		margin: 20px 0;
+	}
+
+	p.read-more a {
+		font-weight: bold;
+		float: right;
+		clear: both;
+		margin: 20px 0;
+		color:@relaxrblue;
+	}
+}
+
+aside.sidebar{
+	width: 35%;
+	float: right;
+	padding: 2% 6% 2% 2%;
+}
+
+// Look at me Mixin!
+.button-border-radius (@radius) {
+	border-radius:@radius ;
+	-moz-border-radius: @radius;
+	-webkit-border-radius: @radius;
+}
+
+section.signup {
+  text-align:center;
+  padding:2% 0;
+  background:#F9E42E;
+	clear: both;
+
+	// Look at me Mixin!
+
+	.buttoncolor (dark, @buttoncolor) {
+  	color: darken(@buttoncolor, 10%);
+	}
+
+	.buttoncolor (light, @buttoncolor) {
+  	color: lighten(@buttoncolor, 10%);
+	}
+
+	.buttoncolor (@_, @buttoncolor) {
+  	display: block;
+	}
+
+	@switch: light;
+
+  button {
+    .button-border-radius(5px); // Look at me Mixin!
+    margin: 0px auto;
+    width: 200px;
+    border: medium none;
+    background-color: #033048;
+    padding: 10px 0px;
+    font-weight: bold;
+    font-size: 15pt;
+		.buttoncolor(@switch, #FFF); // Look at me Mixin!
+  }
+}
+
+footer.footer {
+  text-align: center;
+  background:#000;
+  width:100%;
+  padding:2% 5% 1% 5%;
+  box-sizing: padding-box;
+
+  img:first-of-type {
+    clear:both;
+    display:block;
+    margin:10px auto;
+  }
+
+  a {
+    display:inline-block;
+    margin: 10px;
+  }
+
+  p {
+    margin: 40px 0 0 0;
+  }
+}
